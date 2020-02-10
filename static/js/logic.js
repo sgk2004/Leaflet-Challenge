@@ -5,7 +5,7 @@ const queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
 function markerColor(mag){
   switch (true){
       case (mag <= 1):
-      return '#feb24c';        
+      return '#31a354';        
 
       case (mag <= 2):
       return '#fd8d3c';        
@@ -116,11 +116,11 @@ function makeMap(eqData)
     const labelTexts = [];
   
     labels.forEach(function(label, index){
-      lableColors.push(`<listyle="background-color:${markerColor(label[index+1])};"></li>`);
+      lableColors.push(`<li style="background-color:${markerColor(label[index+1])};"></li>`);
       labelTexts.push(`<span class="legend-label">${label[index]}</span>`)
     });
   
-    const labelColorHtml = `<ul ${lableColors.join("")}</ul>`;
+    const labelColorHtml = `<ul ${lableColors.join("")}></ul>`;
     const labelTextHtml = `<div id="labels-text">${labelTexts.join("<br")}></div`;
     const legendInfo = `<h4>Earthquake<br>Magnitude</h4>
                         <div class=\"labels\"${labelColorHtml} ${labelTextHtml}></div>`;
