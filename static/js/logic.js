@@ -128,7 +128,7 @@ function makeMap(eqData)
   
     const labelColorHtml = `<ul>${lableColors.join(" ")}</ul>`;
     console.log(labelColorHtml);
-    const legendInfo = `<h3 class = "text"><u>LEGEND</u><br></h3><div>${labelColorHtml}<br>Earthquake<br>Magnitude</div>`;
+    const legendInfo = `<h3><u>LEGEND</u><br></h3><div>${labelColorHtml}<br>Earthquake<br>Magnitude</div>`;
     console.log(legendInfo);
     div.innerHTML = legendInfo;
     return div;
