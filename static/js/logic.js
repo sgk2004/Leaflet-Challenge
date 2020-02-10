@@ -121,16 +121,14 @@ function makeMap(eqData)
   
     labels.forEach(function(label,index){
       console.log(label);
-      lableColors.push(`<li style="background: ${markerColor(index+1)};">${label}</li>`);
-      labelTexts.push(`<span class="legend-label"> ${label} </span>`)
-    });
+      lableColors.push(`<li style="background: ${markerColor(index+1)};"><strong>${label}</strong></li>`);
+      });
     console.log(lableColors);
     console.log(labelTexts);
   
-    const labelColorHtml = `<ul> ${lableColors.join(" ")}</ul>`;
-    const labelTextHtml = `<div id="labels-text">${labelTexts.join("<br")}></div`;
-    const legendInfo = `<h4>Earthquake<br>Magnitude</h4>
-                        <div class=\"labels\"${labelColorHtml} ${labelTextHtml}></div>`;
+    const labelColorHtml = `<ul>${lableColors.join(" ")}</ul>`;
+    console.log(labelColorHtml);
+    const legendInfo = `<h4>Earthquake<br>Magnitude<br>Color legend</h4><div>${labelColorHtml}</div>`;
     console.log(legendInfo);
     div.innerHTML = legendInfo;
     return div;
