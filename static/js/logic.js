@@ -56,8 +56,7 @@ d3.json(queryUrl, function(data) {
           onEachFeature:function (feature,layer)
           {
            
-                layer.bindPopup(`<html>Magnitude: ${feature.properties.mag}
-                <br> <h2>Location:${feature.properties.place} </h2></html>`);
+                layer.bindPopup(`<html><h2>Magnitude: ${feature.properties.mag}<h2><hr><h3>Location: ${feature.properties.place} </h3></html>`);
                 
           }
 })   
