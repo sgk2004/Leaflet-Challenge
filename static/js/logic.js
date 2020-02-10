@@ -1,5 +1,6 @@
 // Store earthquake API endpoint as queryUrl
-const queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
+// Past 30 Days all earthquake data
+const queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
 
 // FUNCTIONS TO CREATE FEATURES OF MARKER-----------------------------------------------------------------------------------------
 function markerColor(mag){
