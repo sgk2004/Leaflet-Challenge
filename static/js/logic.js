@@ -106,29 +106,29 @@ function makeMap(eqData)
 
 // LAYER CONTROL-------------------------------------------------------------------------------------------------------------------
   // Create a layer control containing our baseMaps
-  L.control.layers(baseMaps, overlayLayer, {
-    collapsed: false
+  L.control.layers(baseMaps, overlayLayer,eqData, {
+    // collapsed: false
   }).addTo(myMap);
 
   //  Set up the legend
   const legend = L.control({ position: "bottomright" });
   legend.onAdd = function() {
     const div = L.DomUtil.create("div", "info legend");
-    const labels = ['0-1','1-2','2-3','3-4','4-5','5+'];
+    const labels = [' 0 - 1 ',' 1 - 2 ',' 2 - 3 ',' 3 - 4 ',' 4 - 5 ',' 5 +'];
     console.log(labels);
     const lableColors = [];
     const labelTexts = [];
   
     labels.forEach(function(label,index){
       console.log(label);
-      lableColors.push(`<li style="background: ${markerColor(index+1)};"><strong>${label}</strong></li>`);
+      lableColors.push(`<li style="background: ${markerColor(index+1)};"> <strong>${label}</strong> </li>`);
       });
     console.log(lableColors);
     console.log(labelTexts);
   
     const labelColorHtml = `<ul>${lableColors.join(" ")}</ul>`;
     console.log(labelColorHtml);
-    const legendInfo = `<h4>Earthquake<br>Magnitude<br>Color legend</h4><div>${labelColorHtml}</div>`;
+    const legendInfo = `<h3 class = "text"><u>LEGEND</u><br></h3><div>${labelColorHtml}<br>Earthquake<br>Magnitude</div>`;
     console.log(legendInfo);
     div.innerHTML = legendInfo;
     return div;
