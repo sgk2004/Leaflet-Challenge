@@ -53,7 +53,7 @@ d3.json(queryUrl, function(data) {
                     fillOpacity: 0.75  })
           },
           // Binding a pop-up to each circle
-          onEachFeatures:function (feature,layer)
+          onEachFeature:function (feature,layer)
           {
            
                 layer.bindPopup(`<html>Magnitude: ${feature.properties.mag}
