@@ -4,23 +4,26 @@ const queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
 // FUNCTIONS TO CREATE FEATURES OF MARKER-----------------------------------------------------------------------------------------
 function markerColor(mag){
   switch (true){
+
       case (mag <= 1):
-      return '#31a354';        
+      return '#c2e699';
 
       case (mag <= 2):
-      return '#fd8d3c';        
+      return '#ffffb2';        
 
       case (mag <= 3):
-      return '#fc4e2a';        
+      return '#fecc5c';        
 
       case (mag <= 4):
-      return '#e31a1c';        
+      return '#fd8d3c';        
 
       case (mag <= 5):
-      return '#bd0026';        
+      return '#f03b20';        
 
       case (mag > 5):
-      return '#800026';        
+      return '#bd0026';        
+
+      
   }
 }
 
@@ -112,18 +115,23 @@ function makeMap(eqData)
   legend.onAdd = function() {
     const div = L.DomUtil.create("div", "info legend");
     const labels = ['0-1','1-2','2-3','3-4','4-5','5+'];
+    console.log(labels);
     const lableColors = [];
     const labelTexts = [];
   
-    labels.forEach(function(label, index){
-      lableColors.push(`<li style="background-color:${markerColor(label[index+1])};"></li>`);
-      labelTexts.push(`<span class="legend-label">${label[index]}</span>`)
+    labels.forEach(function(label,index){
+      console.log(label);
+      lableColors.push(`<li style="background: ${markerColor(index+1)};">${label}</li>`);
+      labelTexts.push(`<span class="legend-label"> ${label} </span>`)
     });
+    console.log(lableColors);
+    console.log(labelTexts);
   
-    const labelColorHtml = `<ul ${lableColors.join("")}></ul>`;
+    const labelColorHtml = `<ul> ${lableColors.join(" ")}</ul>`;
     const labelTextHtml = `<div id="labels-text">${labelTexts.join("<br")}></div`;
     const legendInfo = `<h4>Earthquake<br>Magnitude</h4>
                         <div class=\"labels\"${labelColorHtml} ${labelTextHtml}></div>`;
+    console.log(legendInfo);
     div.innerHTML = legendInfo;
     return div;
   
