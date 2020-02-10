@@ -107,22 +107,28 @@ function makeMap(eqData)
     collapsed: false
   }).addTo(myMap);
 
-// Set up the legend
-var legend = L.control({ position: "bottomright" });
-legend.onAdd = function() {
-  var div = L.DomUtil.create("div", "info legend");
-  grades = [0,1,2,3,4,5];
+  //  Set up the legend
+  const legend = L.control({ position: "bottomright" });
+  legend.onAdd = function() {
+    const div = L.DomUtil.create("div", "info legend");
+    const labels = ['0-1','1-2','2-3','3-4','4-5','5+'];
+    const lableColors = [];
+    const labelTexts = [];
   
-  grades.forEach(function(limit, index) {
-    div.innerHTML += `<i style = "background ${markerColor(limit[index] +1)}"> </i>
-     ${limit[index]} &ndash; ${limit[index+1]}<br>`
-  });
- return div;
-};
-// Adding legend to the map
-legend.addTo(myMap);
+    labels.forEach(function(label, index){
+      lableColors.push(`<listyle="background-color:${markerColor(label[index+1])};"></li>`);
+      labelTexts.push(`<span class="legend-label">${label[index]}</span>`)
+    });
+  
+    const labelColorHtml = `<ul ${lableColors.join("")}</ul>`;
+    const labelTextHtml = `<div id="labels-text">${labelTexts.join("<br")}></div`;
+    const legendInfo = `<h4>Earthquake<br>Magnitude</h4>
+                        <div class=\"labels\"${labelColorHtml} ${labelTextHtml}></div>`;
+    div.innerHTML = legendInfo;
+    return div;
+  
+  };
+  // Adding legend to the map
+  legend.addTo(myMap);
 
 }
-
-
-
