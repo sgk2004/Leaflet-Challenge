@@ -1,2 +1,9 @@
-# Leaflet-Challenge
-United States Geological Survey earthquake data Visualization using Leaflet
+
+United States Geological Survey earthquake 
+
+![](Images/dash1.JPG)
+
+
+# Data Visualization using Leaflet
+
+![](Images/dashboard.JPG)
